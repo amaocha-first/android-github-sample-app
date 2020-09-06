@@ -1,4 +1,4 @@
-package com.example.droid_github_app.view
+package com.example.droid_github_app.view.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,13 +14,18 @@ class MainActivity : AppCompatActivity() {
             val fragment = ProjectFragment()
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.fragment_container, fragment, TAG_OF_PROJECT_LIST_FRAGMENT)
+                .add(R.id.fragment_container, fragment,
+                    TAG_OF_PROJECT_LIST_FRAGMENT
+                )
                 .commit()
         }
     }
 
     fun show(project: Project) {
-        val projectFragment = ProjectFragment.forProject(project.name)
+        val projectFragment =
+            ProjectFragment.forProject(
+                project.name
+            )
         supportFragmentManager
             .beginTransaction()
             .addToBackStack("project")

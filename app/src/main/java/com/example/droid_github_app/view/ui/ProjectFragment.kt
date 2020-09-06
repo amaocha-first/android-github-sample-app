@@ -1,4 +1,4 @@
-package com.example.droid_github_app.view
+package com.example.droid_github_app.view.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,7 +17,8 @@ class ProjectFragment : Fragment() {
     companion object {
         private const val KEY_PROJECT_ID = "project_id"
 
-        fun forProject(projectId: String) = ProjectFragment().apply {
+        fun forProject(projectId: String) = ProjectFragment()
+            .apply {
             arguments = Bundle().apply { putString(KEY_PROJECT_ID, projectId) }
         }
     }

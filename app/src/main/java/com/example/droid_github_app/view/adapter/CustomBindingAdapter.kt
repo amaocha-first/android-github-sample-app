@@ -1,4 +1,4 @@
-package com.example.droid_github_app.view
+package com.example.droid_github_app.view.adapter
 
 import android.view.View
 import androidx.databinding.BindingAdapter

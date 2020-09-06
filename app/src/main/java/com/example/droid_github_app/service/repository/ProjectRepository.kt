@@ -15,7 +15,7 @@ class ProjectRepository {
 
     private var githubService: GithubService = retrofit.create(GithubService::class.java)
 
-    suspend fun getProjectList(userId: String): Response<List<Project>> = githubService.getProject
+    suspend fun getProjectList(userId: String): Response<List<Project>> = githubService.getProjectList(userId)
     suspend fun getProjectDetails(userID: String, projectName: String): Response<Project> = githubService.getProjectDetails(userID, projectName)
 
     companion object Factory {
