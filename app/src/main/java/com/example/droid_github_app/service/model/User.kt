@@ -2,6 +2,17 @@ package com.example.droid_github_app.service.model
 
 import java.util.*
 
+
+
+
+
+
+
+
+
+
+
+
 data class User(
     var login: String,
     var id: Long,
