@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.droid_github_app.R
+import com.example.droid_github_app.databinding.FragmentProjectDetailsBinding
 import com.example.droid_github_app.viewModel.ProjectViewModel
 
 class ProjectFragment : Fragment() {
@@ -41,6 +43,23 @@ class ProjectFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //binding = DataBindingUtil.inflate(inflater, R.layout.fragment)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_project_details, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, saveadInstanceState: Bundle?) {
+        super.onViewCreated(view, saveadInstanceState)
+
+        binding.apply {
+            projectViewModel = viewModel
+            isLoading = true
+        }
+
+        viewModel.projectLiveData.observe(viewLifecycleOwner, Observer { project ->
+            project?.let {
+                binding.isLoading = false
+                viewModel.setProject(it)
+            }
+        })
     }
 }
